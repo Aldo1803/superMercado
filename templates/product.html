@@ -45,7 +45,16 @@
                 <li class="list-group-item"><b>Precio: </b> ${{product.precio}}</li>
             </ul>
             <form action="" method="POST">
+                {% if product.stock > 0 %}
                 <button type="submit" class="btn btn-success">Realizar compra</button>
+                {%endif%}
+                {% if product.stock <= 0 %}
+                <button type="submit" class="btn btn-success" disabled>Realizar compra</button>
+                <div class="alert alert-warning" role="alert">
+                El producto no esta disponible
+                </div>
+                {%endif%}
+
             </form>
 
 
